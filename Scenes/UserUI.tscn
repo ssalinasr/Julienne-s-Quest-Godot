@@ -1,0 +1,152 @@
+[gd_scene load_steps=10 format=3 uid="uid://bqx7mvjcfkaso"]
+
+[ext_resource type="Texture2D" uid="uid://x2pf2g5i3tmn" path="res://Assets/Picable/LootIcon.png" id="1_k6krj"]
+[ext_resource type="Script" path="res://Scripts/UIManager.gd" id="1_vucdj"]
+[ext_resource type="Texture2D" uid="uid://cl1b8whkvenwr" path="res://Assets/Picable/TreasureIcon.png" id="2_shuwj"]
+[ext_resource type="Texture2D" uid="uid://bfphj5pvyurap" path="res://Assets/Picable/NoteIcon.png" id="3_vjccg"]
+[ext_resource type="Texture2D" uid="uid://dptwbs0pru1th" path="res://Assets/Picable/QuestNoteIcon.png" id="4_u6k50"]
+
+[sub_resource type="FontVariation" id="FontVariation_xu00s"]
+spacing_top = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ynke"]
+bg_color = Color(0, 0, 0, 0.501961)
+border_color = Color(0.8, 0.8, 0.8, 0.501961)
+
+[sub_resource type="Theme" id="Theme_u4eam"]
+Label/constants/line_spacing = 3
+Label/constants/outline_size = 5
+Label/constants/shadow_offset_x = 42
+Label/constants/shadow_offset_y = 404
+Label/constants/shadow_outline_size = 32
+Label/font_sizes/font_size = 16
+Label/fonts/font = SubResource("FontVariation_xu00s")
+Panel/styles/panel = SubResource("StyleBoxFlat_0ynke")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_yufen"]
+
+[node name="UserUI" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_priority = 2
+script = ExtResource("1_vucdj")
+
+[node name="NamePanel" type="Panel" parent="CanvasLayer"]
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 373.0
+offset_bottom = 237.0
+theme = SubResource("Theme_u4eam")
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayerIcon" type="TextureRect" parent="CanvasLayer"]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 156.0
+offset_bottom = 156.0
+theme = SubResource("Theme_u4eam")
+texture = SubResource("CanvasTexture_yufen")
+metadata/_edit_use_anchors_ = true
+
+[node name="LootIcon" type="TextureRect" parent="CanvasLayer"]
+offset_left = 173.0
+offset_top = 44.0
+offset_right = 213.0
+offset_bottom = 84.0
+theme = SubResource("Theme_u4eam")
+texture = ExtResource("1_k6krj")
+metadata/_edit_use_anchors_ = true
+
+[node name="TreasureIcon" type="TextureRect" parent="CanvasLayer"]
+offset_left = 173.0
+offset_top = 92.0
+offset_right = 213.0
+offset_bottom = 132.0
+theme = SubResource("Theme_u4eam")
+texture = ExtResource("2_shuwj")
+metadata/_edit_use_anchors_ = true
+
+[node name="NoteIcon" type="TextureRect" parent="CanvasLayer"]
+offset_left = 173.0
+offset_top = 137.0
+offset_right = 213.0
+offset_bottom = 177.0
+theme = SubResource("Theme_u4eam")
+texture = ExtResource("3_vjccg")
+metadata/_edit_use_anchors_ = true
+
+[node name="QuestNoteIcon" type="TextureRect" parent="CanvasLayer"]
+offset_left = 173.0
+offset_top = 185.0
+offset_right = 213.0
+offset_bottom = 225.0
+theme = SubResource("Theme_u4eam")
+texture = ExtResource("4_u6k50")
+metadata/_edit_use_anchors_ = true
+
+[node name="NameLabel" type="Label" parent="CanvasLayer"]
+offset_left = 163.0
+offset_top = 8.0
+offset_right = 362.0
+offset_bottom = 35.0
+theme = SubResource("Theme_u4eam")
+text = "Julienne"
+metadata/_edit_use_anchors_ = true
+
+[node name="LootbagLabel" type="Label" parent="CanvasLayer"]
+offset_left = 221.0
+offset_top = 51.0
+offset_right = 315.0
+offset_bottom = 81.0
+theme = SubResource("Theme_u4eam")
+text = "0 Lootbags
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="TreasureLabel" type="Label" parent="CanvasLayer"]
+offset_left = 221.0
+offset_top = 98.0
+offset_right = 315.0
+offset_bottom = 128.0
+theme = SubResource("Theme_u4eam")
+text = "0 Treasures
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="NoteLabel" type="Label" parent="CanvasLayer"]
+offset_left = 221.0
+offset_top = 141.0
+offset_right = 315.0
+offset_bottom = 171.0
+theme = SubResource("Theme_u4eam")
+text = "0 Notes
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="QuestNoteLabel" type="Label" parent="CanvasLayer"]
+offset_left = 221.0
+offset_top = 188.0
+offset_right = 331.0
+offset_bottom = 218.0
+theme = SubResource("Theme_u4eam")
+text = "0 Quest Notes
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="InsAttackLabel" type="Label" parent="CanvasLayer"]
+offset_left = 10.0
+offset_top = 161.0
+offset_right = 158.0
+offset_bottom = 188.0
+theme = SubResource("Theme_u4eam")
+text = "X: Attack"
+metadata/_edit_use_anchors_ = true
+
+[node name="InsInteractLabel" type="Label" parent="CanvasLayer"]
+offset_left = 10.0
+offset_top = 184.0
+offset_right = 158.0
+offset_bottom = 211.0
+theme = SubResource("Theme_u4eam")
+text = "Z: Interact"
+metadata/_edit_use_anchors_ = true

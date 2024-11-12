@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://darls888fdgbo"]
+
+[ext_resource type="Script" path="res://Scripts/QuestNoteObject.gd" id="1_w3g1i"]
+[ext_resource type="Texture2D" uid="uid://dptwbs0pru1th" path="res://Assets/Picable/QuestNoteIcon.png" id="2_76acv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qtlk"]
+size = Vector2(16, 20)
+
+[sub_resource type="Animation" id="Animation_qds3q"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_eq2jv"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("QNoteIcon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, -2), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y7v06"]
+_data = {
+"RESET": SubResource("Animation_qds3q"),
+"idle": SubResource("Animation_eq2jv")
+}
+
+[node name="QuestNote" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 9
+script = ExtResource("1_w3g1i")
+pickable_type = "quest_note"
+
+[node name="QNoteHitbox" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_7qtlk")
+
+[node name="QNoteIcon" type="Sprite2D" parent="Area2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_76acv")
+
+[node name="IconAnimator" type="AnimationPlayer" parent="Area2D"]
+libraries = {
+"": SubResource("AnimationLibrary_y7v06")
+}
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

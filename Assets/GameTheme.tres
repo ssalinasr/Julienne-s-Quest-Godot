@@ -1,0 +1,22 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b83cocpevtkr3"]
+
+[sub_resource type="FontVariation" id="FontVariation_xu00s"]
+spacing_top = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ynke"]
+bg_color = Color(0, 0, 0, 0.501961)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8, 0.8, 0.8, 0.501961)
+
+[resource]
+Label/constants/line_spacing = 3
+Label/constants/outline_size = 5
+Label/constants/shadow_offset_x = 42
+Label/constants/shadow_offset_y = 404
+Label/constants/shadow_outline_size = 32
+Label/font_sizes/font_size = 16
+Label/fonts/font = SubResource("FontVariation_xu00s")
+Panel/styles/panel = SubResource("StyleBoxFlat_0ynke")

@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://djcpmoubvo46f"]
+
+[ext_resource type="Script" path="res://Scripts/LootObject.gd" id="1_cvll8"]
+[ext_resource type="Texture2D" uid="uid://x2pf2g5i3tmn" path="res://Assets/Picable/LootIcon.png" id="2_vi15g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qtlk"]
+size = Vector2(13, 16)
+
+[sub_resource type="Animation" id="Animation_qds3q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LootIcon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_eq2jv"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LootIcon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, -2), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y7v06"]
+_data = {
+"RESET": SubResource("Animation_qds3q"),
+"idle": SubResource("Animation_eq2jv")
+}
+
+[node name="Lootbag" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 9
+script = ExtResource("1_cvll8")
+pickable_type = "loot"
+
+[node name="LootHitbox" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1.5, 0)
+shape = SubResource("RectangleShape2D_7qtlk")
+
+[node name="LootIcon" type="Sprite2D" parent="Area2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_vi15g")
+
+[node name="IconAnimator" type="AnimationPlayer" parent="Area2D"]
+libraries = {
+"": SubResource("AnimationLibrary_y7v06")
+}
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

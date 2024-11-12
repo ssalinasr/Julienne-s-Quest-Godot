@@ -1,0 +1,89 @@
+[gd_scene load_steps=8 format=3 uid="uid://bq4oobghcemgn"]
+
+[ext_resource type="Script" path="res://Scripts/DialogInteract.gd" id="1_ka2nx"]
+[ext_resource type="Texture2D" uid="uid://dh58fll5lxvjf" path="res://Assets/Picable/ArrowIcon.png" id="1_spgap"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0k2tm"]
+size = Vector2(35, 39)
+
+[sub_resource type="Animation" id="Animation_iml63"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ArrowIcon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -1)]
+}
+
+[sub_resource type="Animation" id="Animation_vtk87"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ArrowIcon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -1), Vector2(0, -3), Vector2(0, -1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4t1wv"]
+_data = {
+"RESET": SubResource("Animation_iml63"),
+"idle": SubResource("Animation_vtk87")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6cx06"]
+size = Vector2(163, 59)
+
+[node name="DialogActivator" type="Node2D"]
+visible = false
+script = ExtResource("1_ka2nx")
+
+[node name="InteractDialogArea" type="Area2D" parent="." groups=["dialogable"]]
+collision_layer = 16
+
+[node name="DialogCollision" type="CollisionShape2D" parent="InteractDialogArea"]
+position = Vector2(0.5, -1.5)
+shape = SubResource("RectangleShape2D_0k2tm")
+
+[node name="ArrowIcon" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+texture = ExtResource("1_spgap")
+
+[node name="ArrowAnimator" type="AnimationPlayer" parent="."]
+root_node = NodePath("../InteractDialogArea")
+libraries = {
+"": SubResource("AnimationLibrary_4t1wv")
+}
+
+[node name="LeftVisibleBox" type="Area2D" parent="."]
+
+[node name="LeftCollBox" type="CollisionShape2D" parent="LeftVisibleBox"]
+position = Vector2(0.5, -13.5)
+shape = SubResource("RectangleShape2D_6cx06")
+debug_color = Color(0.634215, 0.524516, 0.161655, 0.42)
+
+[node name="RightVisibleBox" type="Area2D" parent="."]
+visible = false
+monitoring = false
+monitorable = false
+
+[node name="RightCollBox" type="CollisionShape2D" parent="RightVisibleBox"]
+position = Vector2(41, -2)
+shape = SubResource("RectangleShape2D_6cx06")
+debug_color = Color(0.634215, 0.524516, 0.161655, 0.42)
+
+[connection signal="body_entered" from="LeftVisibleBox" to="." method="_on_left_visible_box_body_entered"]
+[connection signal="body_exited" from="LeftVisibleBox" to="." method="_on_left_visible_box_body_exited"]
+[connection signal="body_entered" from="RightVisibleBox" to="." method="_on_right_visible_box_body_entered"]
+[connection signal="body_exited" from="RightVisibleBox" to="." method="_on_right_visible_box_body_exited"]

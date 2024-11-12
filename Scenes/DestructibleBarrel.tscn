@@ -1,0 +1,139 @@
+[gd_scene load_steps=17 format=3 uid="uid://d4ay8d1g2lymg"]
+
+[ext_resource type="Script" path="res://Scripts/DestructibleObject.gd" id="1_pgaeu"]
+[ext_resource type="Texture2D" uid="uid://ci7vucublnrdt" path="res://Assets/Destructible Objects Sprite Sheet.png" id="2_6622v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jm0sv"]
+size = Vector2(37, 34)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cx7sj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpl2s"]
+atlas = ExtResource("2_6622v")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmdiu"]
+atlas = ExtResource("2_6622v")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhbde"]
+atlas = ExtResource("2_6622v")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmjvf"]
+atlas = ExtResource("2_6622v")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gje3b"]
+atlas = ExtResource("2_6622v")
+region = Rect2(256, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5ue6"]
+atlas = ExtResource("2_6622v")
+region = Rect2(320, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqpo3"]
+atlas = ExtResource("2_6622v")
+region = Rect2(384, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hix4y"]
+atlas = ExtResource("2_6622v")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7ddw"]
+atlas = ExtResource("2_6622v")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrs56"]
+atlas = ExtResource("2_6622v")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipjsr"]
+atlas = ExtResource("2_6622v")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kce8l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpl2s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmdiu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhbde")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmjvf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gje3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5ue6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqpo3")
+}],
+"loop": true,
+"name": &"die",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hix4y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7ddw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qrs56")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipjsr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 30.0
+}]
+
+[node name="Barrel" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_layer = 8
+collision_mask = 9
+script = ExtResource("1_pgaeu")
+hp = 50
+
+[node name="AreaDamageBox" type="Area2D" parent="CharacterBody2D" groups=["destructible"]]
+collision_layer = 8
+collision_mask = 9
+
+[node name="BoxHitbox" type="CollisionShape2D" parent="CharacterBody2D/AreaDamageBox"]
+position = Vector2(-0.5, -12)
+shape = SubResource("RectangleShape2D_jm0sv")
+
+[node name="Floor" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, -9)
+shape = SubResource("CapsuleShape2D_cx7sj")
+
+[node name="DestructibleSprite" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(-3, -17)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_kce8l")
+animation = &"die"
+
+[node name="DieTimer" type="Timer" parent="CharacterBody2D"]
+
+[node name="HurtTimer" type="Timer" parent="CharacterBody2D"]
+wait_time = 0.4
+
+[connection signal="died" from="CharacterBody2D" to="CharacterBody2D" method="_on_died"]
+[connection signal="timeout" from="CharacterBody2D/DieTimer" to="CharacterBody2D" method="_on_die_timer_timeout"]
+[connection signal="timeout" from="CharacterBody2D/HurtTimer" to="CharacterBody2D" method="_on_hurt_timer_timeout"]
