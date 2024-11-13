@@ -107,7 +107,7 @@ animations = [{
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 collision_layer = 8
-collision_mask = 9
+collision_mask = 11
 script = ExtResource("1_pgaeu")
 hp = 50
 
