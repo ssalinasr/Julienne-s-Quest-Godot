@@ -7,7 +7,6 @@ extends Node2D
 func _process(delta: float) -> void:
 	icon_sprite.play("idle")
 
-
 func _on_left_visible_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		show()

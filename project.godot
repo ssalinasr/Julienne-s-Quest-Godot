@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 CountableVars="*res://Scripts/Autoload/CountableVars.gd"
+SceneChange="*res://Scripts/Autoload/SceneChange.gd"
 
 [editor_plugins]
 

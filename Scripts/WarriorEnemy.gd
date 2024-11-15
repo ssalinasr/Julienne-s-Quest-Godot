@@ -9,6 +9,7 @@ const JUMP_VELOCITY = -400.0
 @onready var timer : Timer = $Timer
 @onready var die_timer : Timer = $DieTimer
 @onready var hp_bar : ProgressBar = $HealthBar
+@onready var floor_cast : RayCast2D = $FloorCast
 
 var randint = 0
 var curr_direction = 0
@@ -40,9 +41,11 @@ func movement() -> void:
 	randint = rng.randi_range(0, 4)
 	if randint == 0:
 		curr_direction = list[0]
+		floor_cast.position.x = -27
 		sprite.flip_h = true
 	elif randint == 1:
 		curr_direction = list[2]
+		floor_cast.position.x = 27
 		sprite.flip_h = false
 	else:
 		curr_direction = list[1]
@@ -62,7 +65,8 @@ func update_animations(direction) -> void:
 			elif is_dead:
 				sprite.play('die')
 			else:
-				sprite.play('walk')
+				if floor_cast.is_colliding():
+					sprite.play('walk')
 	else:
 		if velocity.y < 0:
 			sprite.play('jump')
@@ -77,10 +81,18 @@ func _physics_process(delta: float) -> void:
 	var direction = curr_direction
 	if direction:
 		velocity.x = direction * SPEED
+		
+		if !floor_cast.is_colliding():
+			velocity.x = 0
+			
 		if velocity.x == MAX_SPEED:
 			velocity.x = 0
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		
+		if !floor_cast.is_colliding():
+			velocity.x = 0
+			
 		if velocity.x == -MAX_SPEED:
 			velocity.x = 0
 

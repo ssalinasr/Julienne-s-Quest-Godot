@@ -390,6 +390,9 @@ theme_override_styles/background = SubResource("StyleBoxFlat_8lk3p")
 theme_override_styles/fill = SubResource("StyleBoxFlat_51uhu")
 show_percentage = false
 
+[node name="CoyoteTimer" type="Timer" parent="CharacterBody2D"]
+wait_time = 0.5
+
 [connection signal="died" from="CharacterBody2D" to="CharacterBody2D" method="_on_died"]
 [connection signal="hp_changed" from="CharacterBody2D" to="CharacterBody2D" method="_on_hp_changed"]
 [connection signal="animation_finished" from="CharacterBody2D/MainSprite" to="CharacterBody2D" method="_on_main_sprite_animation_finished"]
@@ -398,3 +401,4 @@ show_percentage = false
 [connection signal="body_exited" from="CharacterBody2D/SwordArea" to="CharacterBody2D/SwordArea" method="_on_body_exited"]
 [connection signal="timeout" from="CharacterBody2D/DieTimer" to="CharacterBody2D" method="_on_die_timer_timeout"]
 [connection signal="timeout" from="CharacterBody2D/HurtTimer" to="CharacterBody2D" method="_on_hurt_timer_timeout"]
+[connection signal="timeout" from="CharacterBody2D/CoyoteTimer" to="CharacterBody2D" method="_on_coyote_timer_timeout"]

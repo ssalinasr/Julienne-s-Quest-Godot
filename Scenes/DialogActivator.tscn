@@ -43,7 +43,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6cx06"]
-size = Vector2(163, 59)
+size = Vector2(65.75, 38.625)
 
 [node name="DialogActivator" type="Node2D"]
 visible = false

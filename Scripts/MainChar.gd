@@ -11,12 +11,14 @@ const GRAVITY = 10
 @onready var die_timer : Timer = $DieTimer
 @onready var hurt_timer : Timer = $HurtTimer
 @onready var hp_bar : ProgressBar = $HealthBar
+@onready var coyote_timer : Timer = $CoyoteTimer
 
 var motion = Vector2()
 var is_attacking = false
 var is_hurt = false
 var is_dead = false
 var is_dialog_near = false
+var can_jump = true
 
 @export var hp_max : int = 100 : set = set_hp, get = get_hp
 @export var hp : int = hp_max
@@ -69,6 +71,12 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		
+	if can_jump == false and is_on_floor():
+		can_jump = true
+		
+	if (is_on_floor() == false) and can_jump and coyote_timer.is_stopped():
+		coyote_timer.start() 
+		
 	if Input.is_action_pressed("interact") and is_dialog_near:
 		DialogueManager.show_example_dialogue_balloon(load("res://dialogues/main.dialogue"), "start")
 		is_dialog_near = false
@@ -86,6 +94,7 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("up") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		can_jump = false
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -138,3 +147,6 @@ func deactivate_dialog() -> void:
 
 func _on_hp_changed(new_hp: Variant) -> void:
 	hp_bar.value = new_hp
+	
+func _on_coyote_timer_timeout() -> void:
+	can_jump = false
