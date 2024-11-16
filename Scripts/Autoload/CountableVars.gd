@@ -10,6 +10,22 @@ signal GotLoot()
 signal GotNote()
 signal GotQuestNote()
 
+func resetCounters()-> void:
+	curr_loot = 0
+	curr_notes = 0
+	curr_qnotes = 0
+	curr_treasures = 0
+	emit_signal("GotLoot")
+	emit_signal("GotTreasure")
+	emit_signal("GotNote")
+	emit_signal("GotQuestNote")
+
+func updateCounters() -> void:
+	emit_signal("GotLoot")
+	emit_signal("GotTreasure")
+	emit_signal("GotNote")
+	emit_signal("GotQuestNote")
+	
 func gotObject(type_of : String) -> void:
 		match (type_of):
 			"loot":

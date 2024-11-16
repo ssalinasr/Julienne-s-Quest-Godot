@@ -78,7 +78,7 @@ func _physics_process(delta: float) -> void:
 		coyote_timer.start() 
 		
 	if Input.is_action_pressed("interact") and is_dialog_near:
-		DialogueManager.show_example_dialogue_balloon(load("res://dialogues/main.dialogue"), "start")
+		DialogSignals.callDialog()
 		is_dialog_near = false
 		
 	if Input.is_action_pressed("left"):
@@ -135,6 +135,8 @@ func _on_died() -> void:
 
 func _on_die_timer_timeout() -> void:
 	queue_free()
+	SceneChange._deferred_switch_scene("res://Scenes/IntLvel.tscn")
+	CountableVars.resetCounters()
 	
 func _on_hurt_timer_timeout() -> void:
 	is_hurt = false

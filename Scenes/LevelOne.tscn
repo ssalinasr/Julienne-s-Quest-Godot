@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://bbs7872w5npiv"]
+[gd_scene load_steps=12 format=4 uid="uid://bbs7872w5npiv"]
 
 [ext_resource type="TileSet" uid="uid://cdi0fm78twp7n" path="res://Assets/Medieval_Castle_Asset_Pack/Medieval_Castle_Asset_Pack/MainTileSet.tres" id="1_vxfa5"]
 [ext_resource type="Texture2D" uid="uid://5jjmnf57u12q" path="res://Assets/Final/Final/Background_0.png" id="3_8jup7"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://d0hm1t0fe1xvp" path="res://Scenes/EnemyWarrior.tscn" id="9_52ux2"]
 [ext_resource type="PackedScene" uid="uid://dcawjb727xk6t" path="res://Scenes/SceneSwitcher.tscn" id="10_4uxjw"]
 [ext_resource type="PackedScene" uid="uid://4mjenqrgsred" path="res://Scenes/NotePicable.tscn" id="10_r6pl4"]
+[ext_resource type="PackedScene" uid="uid://bqx7mvjcfkaso" path="res://Scenes/UserUI.tscn" id="11_f1c88"]
 
 [node name="TileMapLayer" type="TileMapLayer"]
 position = Vector2(49, 7)
@@ -55,10 +56,15 @@ position = Vector2(596, 364)
 
 [node name="DialogActivator" parent="." instance=ExtResource("7_0xh41")]
 position = Vector2(342, 273)
+dialog_key = "level1_1"
 
 [node name="DialogActivator2" parent="." instance=ExtResource("7_0xh41")]
 position = Vector2(188, 101)
+dialog_key = "level1_2"
 
 [node name="SceneSwitcher" parent="." instance=ExtResource("10_4uxjw")]
 position = Vector2(803, 108)
 level_key = "Level 2"
+
+[node name="UserUI" parent="." instance=ExtResource("11_f1c88")]
+position = Vector2(60, 187)

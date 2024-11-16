@@ -1,7 +1,62 @@
-~ start
-Test: texto de ejemplo.
-Test: otro texto de ejemplo.
-Test: 1,2,3 probando.
-Test: falló con éxito
-Test: XD
+~ level0_1
+Test: Esta es la introducción 1.
+set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv0, 0)
+=> END
+
+~ level0_2
+Test: Esta es la introducción 2.
+set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv0, 1)
+=> END
+
+~ level1_1
+Test: Final 1_1
+set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv1, 0)
+=> END
+~ level1_2
+Test:  Final 1_2
+set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv1, 1)
+=> END
+
+~ level2_1
+Test:  Final 2_1
+set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv2, 0)
+=> END
+~ level2_2
+Test:  Final 2_2
+set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv2, 1)
+=> END
+
+~ level3_1
+Test:  Final 3_1
+set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv3, 0)
+=> END
+~ level3_2
+Test:  Final 3_2
+set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv3, 1)
+=> END
+~ level3_3
+Test:  Final 3_3
+set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv3, 2)
+=> END
+
+~ level4_1
+Test: Final 4_1
+set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv4, 0)
+=> END
+~ level4_2
+Test: Final 4_2
+set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv4, 1)
+=> END
+~ level4_3
+Test: Final 4_3
+set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv4, 2)
+=> END
+
+~ level5_1
+Test: Final 5_1
+set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv5, 0)
+=> END
+~ level5_2
+Test: Final 5_2
+set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv5, 1)
 => END

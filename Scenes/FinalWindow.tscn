@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://8dgu204dpqjh"]
+
+[ext_resource type="Theme" uid="uid://b83cocpevtkr3" path="res://Assets/GameTheme.tres" id="1_g5yhv"]
+
+[node name="FinalWindow" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(290, 163)
+zoom = Vector2(2, 2)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_g5yhv")
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 0
+offset_right = 579.0
+offset_bottom = 326.0
+theme = ExtResource("1_g5yhv")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 580.0
+offset_bottom = 324.0
+text = "Texto de ejemplo"

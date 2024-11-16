@@ -12,13 +12,13 @@ func _ready() -> void:
 	CountableVars.GotQuestNote.connect(updateQuestNotesDisplay)
 	
 func updateTreasureDisplay() -> void:
-	treasure_label.text = str(CountableVars.curr_treasures) + " Treasures"
+	treasure_label.text = str(CountableVars.curr_treasures)
 	
 func updateLootDisplay() -> void:
-	loot_label.text = str(CountableVars.curr_loot) + " Lootbags"
+	loot_label.text = str(CountableVars.curr_loot)
 	
 func updateNotesDisplay() -> void:
-	note_label.text = str(CountableVars.curr_notes) + " Notes"
+	note_label.text = str(CountableVars.curr_notes)
 	
 func updateQuestNotesDisplay() -> void:
-	quest_note_label.text = str(CountableVars.curr_qnotes) + " Quest Notes"
+	quest_note_label.text = str(CountableVars.curr_qnotes)

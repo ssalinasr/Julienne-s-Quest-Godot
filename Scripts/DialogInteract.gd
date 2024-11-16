@@ -9,6 +9,7 @@ func _process(delta: float) -> void:
 
 func _on_left_visible_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
+		DialogSignals.setDialogKey(dialog_key)
 		show()
 
 func _on_left_visible_box_body_exited(body: Node2D) -> void:
