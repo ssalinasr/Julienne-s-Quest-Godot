@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://c0u4d7m4w5mpq"]
+[gd_scene load_steps=58 format=3 uid="uid://c0u4d7m4w5mpq"]
 
 [ext_resource type="Script" path="res://Scripts/MainChar.gd" id="1_bv244"]
 [ext_resource type="Texture2D" uid="uid://vc6ffq5thhpd" path="res://Assets/Knight_player_1.3/Knight_player/Idle_KG_2.png" id="1_x4osm"]
@@ -8,6 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://dpe7p3b32bykq" path="res://Assets/Knight_player_1.3/Knight_player/Attack_KG_2.png" id="4_eatcy"]
 [ext_resource type="Texture2D" uid="uid://c0rd3opgeab3" path="res://Assets/Knight_player_1.3/Knight_player/Hurt_KG_1.png" id="4_idcip"]
 [ext_resource type="Script" path="res://Scripts/sword_function.gd" id="8_24df3"]
+[ext_resource type="AudioStream" uid="uid://57mbehiua7ls" path="res://Audio/12_Player_Movement_SFX/08_Step_rock_02.wav" id="9_cqcjb"]
+[ext_resource type="AudioStream" uid="uid://cy3qijf6ejqbn" path="res://Audio/12_Player_Movement_SFX/56_Attack_03.wav" id="10_w6db6"]
+[ext_resource type="AudioStream" uid="uid://clrylbc88bbog" path="res://Audio/12_Player_Movement_SFX/30_Jump_03.wav" id="11_5mg55"]
+[ext_resource type="AudioStream" uid="uid://c88q4yj1t5yaw" path="res://Audio/12_Player_Movement_SFX/61_Hit_03.wav" id="12_o3bf2"]
+[ext_resource type="AudioStream" uid="uid://jsks85dm5f10" path="res://Audio/8_Buffs_Heals_SFX/21_Debuff_01.wav" id="13_jkq0x"]
+[ext_resource type="AudioStream" uid="uid://bot678vjcj37m" path="res://Audio/10_UI_Menu_SFX/013_Confirm_03.wav" id="14_w0738"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3s66v"]
 atlas = ExtResource("4_eatcy")
@@ -392,6 +398,49 @@ show_percentage = false
 
 [node name="CoyoteTimer" type="Timer" parent="CharacterBody2D"]
 wait_time = 0.5
+
+[node name="WalkSound" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+stream = ExtResource("9_cqcjb")
+playback_type = 1
+
+[node name="WalkTimer" type="Timer" parent="CharacterBody2D"]
+wait_time = 0.3
+one_shot = true
+
+[node name="AttackSound" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+stream = ExtResource("10_w6db6")
+
+[node name="AttackTimer" type="Timer" parent="CharacterBody2D"]
+wait_time = 0.75
+one_shot = true
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+stream = ExtResource("11_5mg55")
+
+[node name="JumpTimer" type="Timer" parent="CharacterBody2D"]
+wait_time = 0.75
+one_shot = true
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+stream = ExtResource("12_o3bf2")
+
+[node name="HitTimer" type="Timer" parent="CharacterBody2D"]
+wait_time = 0.7
+one_shot = true
+
+[node name="DieSound" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+stream = ExtResource("13_jkq0x")
+
+[node name="DieTimerSound" type="Timer" parent="CharacterBody2D"]
+wait_time = 0.75
+one_shot = true
+
+[node name="InteractSound" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+stream = ExtResource("14_w0738")
+
+[node name="InteractTimer" type="Timer" parent="CharacterBody2D"]
+wait_time = 0.75
+one_shot = true
 
 [connection signal="died" from="CharacterBody2D" to="CharacterBody2D" method="_on_died"]
 [connection signal="hp_changed" from="CharacterBody2D" to="CharacterBody2D" method="_on_hp_changed"]

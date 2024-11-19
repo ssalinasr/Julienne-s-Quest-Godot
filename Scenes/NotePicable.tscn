@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://4mjenqrgsred"]
+[gd_scene load_steps=8 format=3 uid="uid://4mjenqrgsred"]
 
 [ext_resource type="Texture2D" uid="uid://bfphj5pvyurap" path="res://Assets/Picable/NoteIcon.png" id="1_efug3"]
 [ext_resource type="Script" path="res://Scripts/NoteObject.gd" id="1_ucri6"]
+[ext_resource type="AudioStream" uid="uid://dlw2w7cyetaq3" path="res://Audio/10_UI_Menu_SFX/051_use_item_01.wav" id="3_d3xst"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7qtlk"]
 size = Vector2(19, 19)
@@ -63,5 +64,12 @@ texture = ExtResource("1_efug3")
 libraries = {
 "": SubResource("AnimationLibrary_y7v06")
 }
+
+[node name="GotSound" type="AudioStreamPlayer2D" parent="Area2D"]
+stream = ExtResource("3_d3xst")
+
+[node name="GotTimer" type="Timer" parent="Area2D"]
+wait_time = 0.75
+one_shot = true
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

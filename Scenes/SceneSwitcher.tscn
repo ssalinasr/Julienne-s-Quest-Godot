@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dcawjb727xk6t"]
+[gd_scene load_steps=10 format=3 uid="uid://dcawjb727xk6t"]
 
 [ext_resource type="Script" path="res://Scripts/SceneInteract.gd" id="1_brsdo"]
 [ext_resource type="Texture2D" uid="uid://b22atet2x7x10" path="res://Assets/Picable/SceneIcon.png" id="2_wl5ro"]
+[ext_resource type="AudioStream" uid="uid://cpo5d56gypxqu" path="res://Audio/8_Buffs_Heals_SFX/16_Atk_buff_04.wav" id="3_dpdpo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_83suv"]
 size = Vector2(26, 23)
@@ -81,6 +82,12 @@ shape = SubResource("RectangleShape2D_6dd03")
 debug_color = Color(0.908388, 0.265303, 0.367016, 0.42)
 
 [node name="ChargeTimer" type="Timer" parent="."]
+
+[node name="SceneChangeSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_dpdpo")
+
+[node name="SoundTimer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="body_entered" from="LeftVisibleBox" to="." method="_on_left_visible_box_body_entered"]
 [connection signal="body_exited" from="LeftVisibleBox" to="." method="_on_left_visible_box_body_exited"]

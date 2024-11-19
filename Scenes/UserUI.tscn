@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://x2pf2g5i3tmn" path="res://Assets/Picable/LootIcon.png" id="1_k6krj"]
 [ext_resource type="Script" path="res://Scripts/UIManager.gd" id="1_vucdj"]
+[ext_resource type="Texture2D" uid="uid://d4lj3agfq2ow5" path="res://Assets/PlayerIcon.png" id="2_3me5k"]
 [ext_resource type="Texture2D" uid="uid://cl1b8whkvenwr" path="res://Assets/Picable/TreasureIcon.png" id="2_shuwj"]
 [ext_resource type="Texture2D" uid="uid://bfphj5pvyurap" path="res://Assets/Picable/NoteIcon.png" id="3_vjccg"]
 [ext_resource type="Texture2D" uid="uid://dptwbs0pru1th" path="res://Assets/Picable/QuestNoteIcon.png" id="4_u6k50"]
@@ -23,8 +24,6 @@ Label/font_sizes/font_size = 12
 Label/fonts/font = SubResource("FontVariation_xu00s")
 Panel/styles/panel = SubResource("StyleBoxFlat_0ynke")
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_yufen"]
-
 [node name="UserUI" type="Node2D"]
 position = Vector2(-2, -1)
 
@@ -33,31 +32,33 @@ process_priority = 2
 script = ExtResource("1_vucdj")
 
 [node name="NamePanel" type="Panel" parent="CanvasLayer"]
-offset_right = 207.0
+anchors_preset = -1
+offset_right = 256.0
 offset_bottom = 123.0
 theme = SubResource("Theme_u4eam")
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayerIcon" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_top = 0.002
-anchor_bottom = 0.002
-offset_top = -0.296
-offset_right = 71.0
+anchor_top = 0.00817284
+anchor_bottom = 0.00817284
+offset_top = -4.296
+offset_right = 116.0
 offset_bottom = 62.704
 theme = SubResource("Theme_u4eam")
-texture = SubResource("CanvasTexture_yufen")
+texture = ExtResource("2_3me5k")
+expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="LootIcon" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_left = 0.07
+anchor_left = 0.11
 anchor_top = 0.048
-anchor_right = 0.07
+anchor_right = 0.11
 anchor_bottom = 0.048
-offset_left = 0.360001
+offset_left = 0.279999
 offset_top = -0.104
-offset_right = 30.36
+offset_right = 30.28
 offset_bottom = 29.896
 theme = SubResource("Theme_u4eam")
 texture = ExtResource("1_k6krj")
@@ -65,13 +66,13 @@ metadata/_edit_use_anchors_ = true
 
 [node name="TreasureIcon" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_left = 0.069
+anchor_left = 0.109
 anchor_top = 0.099
-anchor_right = 0.069
+anchor_right = 0.109
 anchor_bottom = 0.099
-offset_left = 0.511993
-offset_top = -0.152008
-offset_right = 30.512
+offset_left = 0.431984
+offset_top = -0.152016
+offset_right = 30.432
 offset_bottom = 29.848
 theme = SubResource("Theme_u4eam")
 texture = ExtResource("2_shuwj")
@@ -79,13 +80,13 @@ metadata/_edit_use_anchors_ = true
 
 [node name="NoteIcon" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_left = 0.124
+anchor_left = 0.164
 anchor_top = 0.048
-anchor_right = 0.124
+anchor_right = 0.164
 anchor_bottom = 0.048
-offset_left = 0.151993
+offset_left = 0.0719604
 offset_top = -0.104
-offset_right = 30.152
+offset_right = 30.072
 offset_bottom = 29.896
 theme = SubResource("Theme_u4eam")
 texture = ExtResource("3_vjccg")
@@ -93,13 +94,13 @@ metadata/_edit_use_anchors_ = true
 
 [node name="QuestNoteIcon" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_left = 0.122
+anchor_left = 0.161
 anchor_top = 0.096
-anchor_right = 0.122
+anchor_right = 0.161
 anchor_bottom = 0.096
-offset_left = -0.544006
+offset_left = 0.527985
 offset_top = -0.208
-offset_right = 29.456
+offset_right = 30.528
 offset_bottom = 29.792
 theme = SubResource("Theme_u4eam")
 texture = ExtResource("4_u6k50")
@@ -107,27 +108,27 @@ metadata/_edit_use_anchors_ = true
 
 [node name="NameLabel" type="Label" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_left = 0.069
-anchor_top = 0.006
-anchor_right = 0.069
-anchor_bottom = 0.006
-offset_left = 0.511993
-offset_top = 0.112
-offset_right = 115.512
-offset_bottom = 27.112
+anchor_left = 0.107
+anchor_top = 0.008
+anchor_right = 0.107
+anchor_bottom = 0.008
+offset_left = -0.264008
+offset_top = -0.184
+offset_right = 114.736
+offset_bottom = 26.816
 theme = SubResource("Theme_u4eam")
 text = "Julienne"
 metadata/_edit_use_anchors_ = true
 
 [node name="LootbagLabel" type="Label" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_left = 0.099
+anchor_left = 0.139
 anchor_top = 0.054
-anchor_right = 0.099
+anchor_right = 0.139
 anchor_bottom = 0.054
-offset_left = -0.0480042
+offset_left = -0.128021
 offset_top = 0.00799942
-offset_right = 21.952
+offset_right = 21.872
 offset_bottom = 23.008
 theme = SubResource("Theme_u4eam")
 text = "0
@@ -136,13 +137,13 @@ metadata/_edit_use_anchors_ = true
 
 [node name="TreasureLabel" type="Label" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_left = 0.099
+anchor_left = 0.139
 anchor_top = 0.103
-anchor_right = 0.099
+anchor_right = 0.139
 anchor_bottom = 0.103
-offset_left = -0.0480042
+offset_left = -0.128021
 offset_top = 0.255997
-offset_right = 21.952
+offset_right = 21.872
 offset_bottom = 22.256
 theme = SubResource("Theme_u4eam")
 text = "0"
@@ -150,13 +151,13 @@ metadata/_edit_use_anchors_ = true
 
 [node name="NoteLabel" type="Label" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_left = 0.156
+anchor_left = 0.196
 anchor_top = 0.056
-anchor_right = 0.156
+anchor_right = 0.196
 anchor_bottom = 0.056
-offset_left = 0.287994
+offset_left = 0.207993
 offset_top = -0.288002
-offset_right = 24.288
+offset_right = 24.208
 offset_bottom = 29.712
 theme = SubResource("Theme_u4eam")
 text = "0 
@@ -165,13 +166,13 @@ metadata/_edit_use_anchors_ = true
 
 [node name="QuestNoteLabel" type="Label" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_left = 0.156
+anchor_left = 0.196
 anchor_top = 0.103
-anchor_right = 0.156
+anchor_right = 0.196
 anchor_bottom = 0.103
-offset_left = 0.287994
+offset_left = 0.207993
 offset_top = 0.255997
-offset_right = 27.288
+offset_right = 27.208
 offset_bottom = 24.256
 theme = SubResource("Theme_u4eam")
 text = "0
@@ -189,7 +190,7 @@ offset_top = -0.0400009
 offset_right = 62.696
 offset_bottom = 26.96
 theme = SubResource("Theme_u4eam")
-text = "X: Attack"
+text = "X: Atacar"
 metadata/_edit_use_anchors_ = true
 
 [node name="InsInteractLabel" type="Label" parent="CanvasLayer"]
@@ -203,5 +204,5 @@ offset_top = 1.92799
 offset_right = 87.544
 offset_bottom = 26.928
 theme = SubResource("Theme_u4eam")
-text = "Z: Interact"
+text = "Z: Interactuar"
 metadata/_edit_use_anchors_ = true

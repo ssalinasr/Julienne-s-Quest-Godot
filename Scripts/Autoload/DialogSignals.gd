@@ -8,6 +8,12 @@ var array_dialogs_lv3 = [false, false, false]
 var array_dialogs_lv4 = [false, false, false]
 var array_dialogs_lv5 = [false, false]
 
+var level1_int_sucess = [false, false]
+var level2_int_sucess = [false, false, false]
+var level3_int_sucess = [false, false, false]
+var level4_int_sucess = [false, false, false]
+var level5_int_sucess = [false, false]
+
 func setViewedDialog(array_dialog, index) -> void:
 	array_dialog[index] = true
 	print(array_dialog)

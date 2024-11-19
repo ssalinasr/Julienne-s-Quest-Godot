@@ -4,6 +4,8 @@ extends Node2D
 @export var level_key = ""
 @onready var charge_timer : Timer = $ChargeTimer
 @onready var changer_area : Area2D = $ChangerCollision
+@onready var scene_change_sound : AudioStreamPlayer2D = $SceneChangeSound
+@onready var sound_timer : Timer = $SoundTimer
 var flag = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,6 +44,9 @@ func _on_charge_timer_timeout() -> void:
 	
 func _on_charge_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player") and flag == 1:
+		if sound_timer.time_left <= 0:
+			scene_change_sound.play()
+			sound_timer.start(1)
 		print("Inicia cambio de escena")
 		charge_timer.start()
 		flag = 0

@@ -10,6 +10,10 @@ const JUMP_VELOCITY = -400.0
 @onready var die_timer : Timer = $DieTimer
 @onready var hp_bar : ProgressBar = $HealthBar
 @onready var floor_cast : RayCast2D = $FloorCast
+@onready var die_sound : AudioStreamPlayer2D = $DieSound
+@onready var die_timer_sound : Timer = $DieTimerSound
+@onready var hit_sound : AudioStreamPlayer2D = $HitSound
+@onready var hit_timer : Timer = $HitTimer
 
 var randint = 0
 var curr_direction = 0
@@ -55,15 +59,28 @@ func update_animations(direction) -> void:
 		if direction == 0:
 			if is_hurt:
 				sprite.play('hit')
+				if hit_timer.time_left <= 0:
+					hit_sound.play()
+					hit_timer.start(0.75)
+				
 			elif is_dead:
 				sprite.play('die')
+				if die_timer_sound.time_left <= 0:
+					die_sound.play()
+					die_timer_sound.start(0.75)
 			else:
 				sprite.play('idle')
 		else:
 			if is_hurt:
 				sprite.play('hit')
+				if hit_timer.time_left <= 0:
+					hit_sound.play()
+					hit_timer.start(0.75)
 			elif is_dead:
 				sprite.play('die')
+				if die_timer_sound.time_left <= 0:
+					die_sound.play()
+					die_timer_sound.start(0.75)
 			else:
 				if floor_cast.is_colliding():
 					sprite.play('walk')

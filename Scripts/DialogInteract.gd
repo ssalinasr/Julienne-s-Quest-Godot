@@ -1,5 +1,7 @@
 extends Node2D
 @onready var icon_sprite: AnimationPlayer = $ArrowAnimator
+@onready var interact_sound : AudioStreamPlayer2D = $InteractSound
+@onready var interact_timer : Timer = $InteractTimer
 
 @export var dialog_key = ""
 

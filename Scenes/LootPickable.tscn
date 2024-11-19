@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://djcpmoubvo46f"]
+[gd_scene load_steps=8 format=3 uid="uid://djcpmoubvo46f"]
 
 [ext_resource type="Script" path="res://Scripts/LootObject.gd" id="1_cvll8"]
 [ext_resource type="Texture2D" uid="uid://x2pf2g5i3tmn" path="res://Assets/Picable/LootIcon.png" id="2_vi15g"]
+[ext_resource type="AudioStream" uid="uid://baccyya44av5t" path="res://Audio/10_UI_Menu_SFX/079_Buy_sell_01.wav" id="3_uy34k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7qtlk"]
 size = Vector2(13, 16)
@@ -62,5 +63,12 @@ texture = ExtResource("2_vi15g")
 libraries = {
 "": SubResource("AnimationLibrary_y7v06")
 }
+
+[node name="GotSound" type="AudioStreamPlayer2D" parent="Area2D"]
+stream = ExtResource("3_uy34k")
+
+[node name="GotTimer" type="Timer" parent="Area2D"]
+wait_time = 0.75
+one_shot = true
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

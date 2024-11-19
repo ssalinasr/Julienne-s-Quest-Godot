@@ -1,62 +1,164 @@
 ~ level0_1
-Test: Esta es la introducción 1.
-set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv0, 0)
-=> END
+¿Flecha Parlante?: Hola, estoy para indicarte como progresar en esta misión, que pregunta deseas hacerme:
+- Controles
+	¿Flecha Parlante?: Atacas con X, interactuas con Z y te mueves con las flechas. => level0_1
+- Avanzar de nivel
+	¿Flecha Parlante?: Para avanzar de nivel necesitas interactuar con TODAS las flechas que encuentres, para así encontrar una de color verde. => level0_1
+- Enemigos
+	¿Flecha Parlante?: Hay enemigos en cada nivel, solo debes atacarlos hasta vencerlos. => level0_1
+- ¿¡Por qué una flecha me habla!?
+	¿Flecha Parlante?: Misterios misteriosos de la vida misteriosa. => level0_1
+- Finalizar conversación
+	set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv0, 0)
+	=> END
 
 ~ level0_2
-Test: Esta es la introducción 2.
+Otra Flecha Parlante: Recuerda recolectar todos los objetos que encuentres en cada nivel, quizá tengas alguna recompensa adicional al terminar :D
+Otra Flecha Parlante: Además, si mueres, tendrás que comenzar la misión desde el PRINCIPIO.
 set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv0, 1)
 => END
 
 ~ level1_1
-Test: Final 1_1
-set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv1, 0)
-=> END
+ _:(Encuentras algunas marcas extrañas en el muro que llaman tu atención, ¿Qué decides hacer?)
+- Tocarlas
+	Julienne: Hmm... Interesante...
+	_: (Parece que has activado algún secreto.)
+	set DialogSignals.level1_int_sucess[0] = true
+	set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv1, 0) 
+	=> END
+- Ignorarlas
+	Julienne: Será mejor no tocarlas.
+	set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv1, 0) 
+	=> END
+
 ~ level1_2
-Test:  Final 1_2
-set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv1, 1)
-=> END
+ _:(Encuentras una nota bajo tus pies... ¿Quieres leerla?)
+- Si
+	Julienne: Veamos que dice esta nota
+	Nota en el suelo: "... solo espero que hayas encontrado lo que te solicité, confio plenamente en ti..."
+	Julienne: Que extraño, ¿A quién irá dirigido esto?
+	set DialogSignals.level1_int_sucess[1] = true
+	set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv1, 1)
+	=> END
+- No	
+	set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv1, 1)
+	=> END
 
 ~ level2_1
-Test:  Final 2_1
+_: (Contemplas el entorno que te rodea... Mientras piensas un poco y te preguntas)
+Julienne: ... ¿Encontraré algo de utilidad en este lugar?, espero que así sea.
 set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv2, 0)
 => END
 ~ level2_2
-Test:  Final 2_2
-set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv2, 1)
-=> END
-
+De nuevo otra flecha parlante: Oh, una visitante... ¿Te gustaria responderme una pregunta?:
+- Por supuesto, me encantaría.
+	De nuevo otra flecha parlante: Me gusta esa actitud... Entonces ¿Por qué entraste aquí?:
+	- Porque me encanta explorar
+		Julienne: Acepté la misión de explorar este castillo, y quiero encontrar todo lo que me sea de utilidad.
+		De nuevo otra flecha parlante: Vale... entonces te advertiré, será mejor que te detengas...
+		_: (La flecha deja de hablarte...)
+		Julienne: Pero... ¿Por qué?
+		set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv2, 1)
+		=> END
+	- Por simple curiosidad
+		De nuevo otra flecha parlante: Hmm... una persona curiosa... entonces sigue adentrándote, los secretos te esperan... Julienne.
+		Julienne: Eh!... Espera, como sabes mi nombre.
+		_: (La flecha deja de hablarte...)
+		Julienne: Esto se está poniendo extraño.
+		_: (Parece que has activado algún secreto.)
+		set DialogSignals.level2_int_sucess[0] = true
+		set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv2, 1)
+		=> END	
+- ¿Por qué tendría que hacerlo?
+	De nuevo otra flecha parlante: Porque podria ayudarte a encontrar cosas valiosas, pero veo que no te interesa... así que adiós.
+	_: (La flecha deja de hablarte...)
+	Julienne: Vaya... Qué sensible.
+	set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv2, 1)
+	=> END
+	set DialogSignals.level2_int_sucess[1] = true
+- Prefiero que me digas por que las flechas hablan.
+	De nuevo otra flecha parlante: Esa es la magia de los videojuegos, puedes hacer que cosas muy extrañas sucedan pero se vean orgánicas a la vez.
+	_: (La flecha deja de hablarte...)
+	Julienne: Espera... esto es un ¿videojuego?. ¿Qué se supone que es eso?
+	set DialogSignals.level2_int_sucess[2] = true
+	set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv2, 1)
+	=> END
+	
 ~ level3_1
-Test:  Final 3_1
+_: (Encuentras un texto sobre tu cabeza...)
+_: ...
+_: "Detente!! no sigas hacia adelante, estás en peligro!"
+Julienne: ¿¡Qué!?, pero de que se supone que me tengo que proteger o evitar.
+Julienne: Esto cada vez está más confuso.
 set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv3, 0)
 => END
 ~ level3_2
-Test:  Final 3_2
-set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv3, 1)
-=> END
+Flecha Parlante: Hola!, hola!, Julienne... ¿lista para un acertijo?
+- Claro que si
+	Flecha Parlante: Eso me gusta... Entonces respóndeme valiente Julienne, ¿estarías dispuesta a conocer todos los secretos de este lugar?
+	- Si
+		Julienne: Por supuesto, necesito respuestas.
+		Flecha Parlante: Entonces... lee esta palabra ... (Kxodplgdg) ... eso es lo que necesitas para descubrir el gran secreto nuestro hogar... ehehehe
+		Julienne: Pero eso es una palabra sin sentido.
+		Flecha Parlante: Eso es lo que crees, pero observa bien...
+		_: (El ente bajo la flecha desaparece...)
+		Julienne: Primero los mensajes, luego esto, qué se supone que haga ahora?
+		set DialogSignals.level3_int_sucess[0] = true
+		set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv3, 1)
+		=> END
+	- No
+		Flecha Parlante: Entonces vete, no nos hagas perder el tiempo...
+		_: (El ente bajo la flecha desaparece...)
+		Julienne: Que entes tan sensibles...
+		set DialogSignals.level3_int_sucess[0] = true
+		set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv3, 1)
+		=> END
+- No!, alejate por favor!!
+	Flecha Parlante: Ooh que mala fortuna!, quizá despejaría tu confusión con mis acertijos, pero no quieres... así que hasta nunca!!
+	Julienne: ¿¡Cómo así que hasta nunca!? Espera!
+	_: (La flecha o lo que se oculte tras ella desaparece)
+	Julienne: Aaah! Y ahora que!?... bueno, tendré que salir de aquí lo antes posible.
+	set DialogSignals.level3_int_sucess[1] = true
+	set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv3, 1)
+	=> END
+- ¿¡Más flechas que hablan!?, ¿Qué clase de sitio es este?
+	Flecha Parlante: Uno que ni su propio autor entiende, es improvisación, solo disfrútalo.
+	set DialogSignals.level3_int_sucess[2] = true
+	set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv3, 1)
+	=> END
+
 ~ level3_3
-Test:  Final 3_3
+_: (Encuentras rastros de batalla sobre el suelo ...)
+Julienne: Hmm... parece que alguien ha entrado antes que yo a este lugar...
+Voz misteriosa: DETENTE!!, SAL ANTES DE QUE SEA TARDE.
+Julienne: Ehh!... ¿¡Qué fue eso!?
+_: (Oyes más voces, pero son inteligibles ...)
+Julienne: Vaya... siento que estoy en peligro. Pero no es hora de detenerse, aún no he explorado este lugar por completo.
 set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv3, 2)
 => END
 
 ~ level4_1
 Test: Final 4_1
+Resolución del acertijo
 set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv4, 0)
 => END
 ~ level4_2
 Test: Final 4_2
+Momento easter egg XD
 set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv4, 1)
 => END
 ~ level4_3
 Test: Final 4_3
+Descubre que está detras de las flechas
 set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv4, 2)
 => END
-
 ~ level5_1
 Test: Final 5_1
+Respuestas al plot
 set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv5, 0)
 => END
 ~ level5_2
 Test: Final 5_2
+Respuestas a las flechas
 set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv5, 1)
 => END

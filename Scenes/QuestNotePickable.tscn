@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://darls888fdgbo"]
+[gd_scene load_steps=8 format=3 uid="uid://darls888fdgbo"]
 
 [ext_resource type="Script" path="res://Scripts/QuestNoteObject.gd" id="1_w3g1i"]
 [ext_resource type="Texture2D" uid="uid://dptwbs0pru1th" path="res://Assets/Picable/QuestNoteIcon.png" id="2_76acv"]
+[ext_resource type="AudioStream" uid="uid://dlw2w7cyetaq3" path="res://Audio/10_UI_Menu_SFX/051_use_item_01.wav" id="3_4n5ar"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7qtlk"]
 size = Vector2(16, 20)
@@ -50,5 +51,12 @@ texture = ExtResource("2_76acv")
 libraries = {
 "": SubResource("AnimationLibrary_y7v06")
 }
+
+[node name="GotSound" type="AudioStreamPlayer2D" parent="Area2D"]
+stream = ExtResource("3_4n5ar")
+
+[node name="GotTimer" type="Timer" parent="Area2D"]
+wait_time = 0.75
+one_shot = true
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

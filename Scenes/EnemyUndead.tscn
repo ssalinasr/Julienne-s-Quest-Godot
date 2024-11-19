@@ -1,9 +1,11 @@
-[gd_scene load_steps=43 format=3 uid="uid://by2mqf7ev0w6k"]
+[gd_scene load_steps=45 format=3 uid="uid://by2mqf7ev0w6k"]
 
 [ext_resource type="Script" path="res://Scripts/UndeadEnemy.gd" id="1_vxum1"]
 [ext_resource type="Texture2D" uid="uid://bjs2ul2ebi5a7" path="res://Assets/Enemies Assets/Undead executioner/Undead executioner puppet/png/death.png" id="2_nujac"]
 [ext_resource type="Texture2D" uid="uid://beemxg6b721u2" path="res://Assets/Enemies Assets/Undead executioner/Undead executioner puppet/png/skill1.png" id="3_7bae1"]
 [ext_resource type="Texture2D" uid="uid://b0rxtx4q6lvc4" path="res://Assets/Enemies Assets/Undead executioner/Undead executioner puppet/png/idle.png" id="4_60y7l"]
+[ext_resource type="AudioStream" uid="uid://rjahli0060xp" path="res://Audio/10_Battle_SFX/69_Enemy_death_01.wav" id="5_v6fx4"]
+[ext_resource type="AudioStream" uid="uid://id3ges48yeca" path="res://Audio/10_Battle_SFX/77_flesh_02.wav" id="6_878g0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y4e61"]
 atlas = ExtResource("2_nujac")
@@ -320,6 +322,20 @@ show_percentage = false
 [node name="FloorCast" type="RayCast2D" parent="CharacterBody2D"]
 position = Vector2(24.6154, 1.53846)
 collision_mask = 4
+
+[node name="DieSound" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+stream = ExtResource("5_v6fx4")
+
+[node name="DieTimerSound" type="Timer" parent="CharacterBody2D"]
+wait_time = 0.76
+one_shot = true
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+stream = ExtResource("6_878g0")
+
+[node name="HitTimer" type="Timer" parent="CharacterBody2D"]
+wait_time = 0.76
+one_shot = true
 
 [connection signal="died" from="CharacterBody2D" to="CharacterBody2D" method="_on_died"]
 [connection signal="hp_changed" from="CharacterBody2D" to="CharacterBody2D" method="_on_hp_changed"]

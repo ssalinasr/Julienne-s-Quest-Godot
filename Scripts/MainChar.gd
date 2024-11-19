@@ -12,6 +12,19 @@ const GRAVITY = 10
 @onready var hurt_timer : Timer = $HurtTimer
 @onready var hp_bar : ProgressBar = $HealthBar
 @onready var coyote_timer : Timer = $CoyoteTimer
+@onready var walk_sound : AudioStreamPlayer2D = $WalkSound
+@onready var walk_timer : Timer = $WalkTimer
+@onready var attack_sound : AudioStreamPlayer2D = $AttackSound
+@onready var attack_timer : Timer = $AttackTimer
+@onready var jump_sound : AudioStreamPlayer2D = $JumpSound
+@onready var jump_timer : Timer = $JumpTimer
+@onready var hit_sound : AudioStreamPlayer2D = $HitSound
+@onready var hit_timer : Timer = $HitTimer
+@onready var die_sound : AudioStreamPlayer2D = $DieSound
+@onready var die_timer_sound : Timer = $DieTimerSound
+@onready var interact_sound : AudioStreamPlayer2D = $InteractSound
+@onready var interact_timer : Timer = $InteractTimer
+
 
 var motion = Vector2()
 var is_attacking = false
@@ -46,25 +59,50 @@ func update_animations(direction) -> void:
 			if is_attacking:
 				sprite.play('attack')
 				sword_sprite.play('sword_attack')
+				if attack_timer.time_left <= 0:
+					attack_sound.play()
+					attack_timer.start(0.75)
 			elif is_hurt:
 				sprite.play('hit')
+				if hit_timer.time_left <= 0:
+					hit_sound.play()
+					hit_timer.start(0.75)
 			elif is_dead:
 				sprite.play("die")
+				if die_timer_sound.time_left <= 0:
+					die_sound.play()
+					die_timer_sound.start(0.75)
 			else:
 				sprite.play('idle')
 		else:
 			if is_attacking:
 				sprite.play('attack')
 				sword_sprite.play('sword_attack')
+				if attack_timer.time_left <= 0:
+					attack_sound.play()
+					attack_timer.start(0.75)
 			elif is_hurt:
 				sprite.play('hit')
+				if hit_timer.time_left <= 0:
+					hit_sound.play()
+					hit_timer.start(0.75)
 			elif is_dead:
 				sprite.play("die")
+				if die_timer_sound.time_left <= 0:
+					die_sound.play()
+					die_timer_sound.start(0.75)
 			else:
 				sprite.play('walk')
+				if walk_timer.time_left <= 0:
+					walk_sound.play()
+					walk_timer.start(0.3)
+					
 	else:
 		if velocity.y < 0:
 			sprite.play('jump')
+			if jump_timer.time_left <= 0:
+				jump_sound.play()
+				jump_timer.start(0.75)
 		
 			
 func _physics_process(delta: float) -> void:
@@ -79,6 +117,9 @@ func _physics_process(delta: float) -> void:
 		
 	if Input.is_action_pressed("interact") and is_dialog_near:
 		DialogSignals.callDialog()
+		if interact_timer.time_left <= 0:
+			interact_sound.play()
+			interact_timer.start(0.75)
 		is_dialog_near = false
 		
 	if Input.is_action_pressed("left"):
@@ -87,7 +128,6 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("right"):
 		sword_element.position.x = 0
 		sprite.flip_h = false
-		
 	if Input.is_action_just_pressed("attack"):
 		is_attacking = true
 	

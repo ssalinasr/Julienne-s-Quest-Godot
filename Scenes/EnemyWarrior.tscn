@@ -1,7 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://d0hm1t0fe1xvp"]
+[gd_scene load_steps=30 format=3 uid="uid://d0hm1t0fe1xvp"]
 
 [ext_resource type="Script" path="res://Scripts/WarriorEnemy.gd" id="1_dse3w"]
 [ext_resource type="Texture2D" uid="uid://c3mf2bdqmrk46" path="res://Assets/Enemies Assets/Fullmain.png" id="2_8v4or"]
+[ext_resource type="AudioStream" uid="uid://rjahli0060xp" path="res://Audio/10_Battle_SFX/69_Enemy_death_01.wav" id="3_a1mwh"]
+[ext_resource type="AudioStream" uid="uid://id3ges48yeca" path="res://Audio/10_Battle_SFX/77_flesh_02.wav" id="4_txuqt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ce14e"]
 atlas = ExtResource("2_8v4or")
@@ -227,6 +229,22 @@ show_percentage = false
 [node name="FloorCast" type="RayCast2D" parent="CharacterBody2D"]
 position = Vector2(24.6154, 1.53846)
 collision_mask = 4
+
+[node name="DieSound" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+scale = Vector2(0.769231, 0.769231)
+stream = ExtResource("3_a1mwh")
+
+[node name="DieTimerSound" type="Timer" parent="CharacterBody2D"]
+wait_time = 0.76
+one_shot = true
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+scale = Vector2(0.769231, 0.769231)
+stream = ExtResource("4_txuqt")
+
+[node name="HitTimer" type="Timer" parent="CharacterBody2D"]
+wait_time = 0.76
+one_shot = true
 
 [connection signal="died" from="CharacterBody2D" to="CharacterBody2D" method="_on_died"]
 [connection signal="hp_changed" from="CharacterBody2D" to="CharacterBody2D" method="_on_hp_changed"]
