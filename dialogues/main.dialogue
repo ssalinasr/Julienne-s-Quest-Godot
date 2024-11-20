@@ -73,9 +73,10 @@ De nuevo otra flecha parlante: Oh, una visitante... ¿Te gustaria responderme un
 	De nuevo otra flecha parlante: Porque podria ayudarte a encontrar cosas valiosas, pero veo que no te interesa... así que adiós.
 	_: (La flecha deja de hablarte...)
 	Julienne: Vaya... Qué sensible.
+	set DialogSignals.level2_int_sucess[1] = true
 	set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv2, 1)
 	=> END
-	set DialogSignals.level2_int_sucess[1] = true
+	
 - Prefiero que me digas por que las flechas hablan.
 	De nuevo otra flecha parlante: Esa es la magia de los videojuegos, puedes hacer que cosas muy extrañas sucedan pero se vean orgánicas a la vez.
 	_: (La flecha deja de hablarte...)
@@ -110,7 +111,7 @@ Flecha Parlante: Hola!, hola!, Julienne... ¿lista para un acertijo?
 		Flecha Parlante: Entonces vete, no nos hagas perder el tiempo...
 		_: (El ente bajo la flecha desaparece...)
 		Julienne: Que entes tan sensibles...
-		set DialogSignals.level3_int_sucess[0] = true
+		set DialogSignals.level3_int_sucess[1] = true
 		set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv3, 1)
 		=> END
 - No!, alejate por favor!!
@@ -138,27 +139,73 @@ set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv3, 2)
 => END
 
 ~ level4_1
-Test: Final 4_1
-Resolución del acertijo
+_: (Lees un pequeño texto escrito en el muro...)
+_: ...
+Julienne: "Humanidad", o al menos eso parece decir...
+Julienne: ¿Sera esa la respuesta al acertijo de la sala anterior?, deberia probar
+_: (Parece que activaste un secreto)
+set DialogSignals.level4_int_sucess[0] = true
 set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv4, 0)
 => END
 ~ level4_2
-Test: Final 4_2
-Momento easter egg XD
+_: (Encuentras otra nota, esta vez dentro del muro)
+Julienne: Vamos a ver que dice esta nota...
+Nota en la pared: "Si alquien lee esto, quiere decir que este proyecto merece una buena calificación, o eso creo XD"
+Julienne: ¿?
+Julienne: ¿Calificación? ¿Videojuego? ¿Proyecto?, ¿Qué significan estas cosas?
+set DialogSignals.level4_int_sucess[3] = true
 set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv4, 1)
 => END
 ~ level4_3
-Test: Final 4_3
-Descubre que está detras de las flechas
-set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv4, 2)
-=> END
+Otra Flecha Parlante: Hola, hola señorita!
+- Hola ente desconocido!
+	Otra Flecha Parlante: Oh, pero no me digas ente desconocido, porque tú me conoces muy bien...
+	Julienne: Eh? ... Entonces,  ¿Quién está dertrás de estas "flechas"?
+	Otra Flecha Parlante: Tu "subconsciente" ...
+	Julienne: Espera ... ¿Qué?
+	_: (El ente desaparece antes de que puedas decir algo más)
+	Julienne: Creo que estoy enloqueciendo.
+	set DialogSignals.level4_int_sucess[1] = true
+	set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv4, 2)
+	=> END
+- ¡Me dirás de una vez que sucede aquí!
+	Otra Flecha Parlante: No pienso responderle a una persona con ese temperamento. Adios...
+	_: (El ente desaparece antes de que puedas decir algo más)
+	Julienne: ¡Maldita sea!
+	set DialogSignals.level4_int_sucess[2] = true
+	set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv4, 2)
+	=> END
+
 ~ level5_1
-Test: Final 5_1
-Respuestas al plot
+_: (Encuentras un libro en el suelo)
+Julienne: Espero que esto si me ayude a entender que está pasando aquí...
+_: (Lees el libro, y encuentras algunas cosas destacables)
+Notas en el libro: "... este lugar es capaz de enloquecer a aquel que se adentre en el ..."
+Notas en el libro: "... no aceptar tratos con entes desconocidos ..."
+Notas en el libro: "... aquí no hay tesoros, sino una mazmorra "maldita" ..."
+Notas en el libro: "... el ente mayor es conocido como C... "
+_: (El texto a continuación es imposible de leer)
+Julienne: Vale, aparentemente este es un lugar no es seguro para las personas...
+Julienne: Sera mejor que salga lo antes posible y lo reporte antes de que sea tarde.
+Julienne: Que confuso ha sido todo esto...
+set DialogSignals.level5_int_sucess[0] = true
 set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv5, 0)
 => END
 ~ level5_2
-Test: Final 5_2
-Respuestas a las flechas
+Tu "subconsciente": Nos vemos de nuevo Julienne ... hehehe ... ¿Quieres jugar conmigo?
+Julienne: No!, tu no eres mi subconsciente, y no eres de confianza, así... que vete y déjame en paz!
+Ente desconocido: Vale, vale, yo solo quería una compañera con quien jugar y hablar...
+Ente desconocido: Este sitio ha estado solo por mucho tiempo...
+Julienne: No me interesa ... solo ... desaparece.
+_: (El ente desaparece, pero la sensación de peligro no)
+Julienne: Demonios, será mejor que me vaya antes de enloquezca con tantos "entes" tratando de manipularme.
+set DialogSignals.level5_int_sucess[1] = true
 set DialogSignals.setViewedDialog(DialogSignals.array_dialogs_lv5, 1)
 => END
+
+~ viewed_dialog
+Advertencia: (Este dialogo ya ha sido leido...)
+=> END
+
+
+

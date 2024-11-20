@@ -21,6 +21,10 @@ func _deferred_switch_scene(res_path) -> void:
 	
 func scene_to_switch(level) -> void:
 	match level:
+		"Level 0":
+			switch_scene("res://Scenes/IntLvel.tscn")
+			print("Ingresa a nivel 0")
+			curr_level_key = "level 0"	
 		"Level 1":
 			switch_scene("res://Scenes/LevelOne.tscn")
 			print("Ingresa a nivel 1")

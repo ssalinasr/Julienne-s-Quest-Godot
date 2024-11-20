@@ -32,7 +32,6 @@ process_priority = 2
 script = ExtResource("1_vucdj")
 
 [node name="NamePanel" type="Panel" parent="CanvasLayer"]
-anchors_preset = -1
 offset_right = 256.0
 offset_bottom = 123.0
 theme = SubResource("Theme_u4eam")

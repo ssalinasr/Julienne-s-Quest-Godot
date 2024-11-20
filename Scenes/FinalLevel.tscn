@@ -37,5 +37,5 @@ dialog_key = "level5_2"
 position = Vector2(48, 232)
 
 [node name="SceneSwitcher" parent="." instance=ExtResource("6_i7d2g")]
-position = Vector2(443, 280)
+position = Vector2(60, 282)
 level_key = "Level 6"
