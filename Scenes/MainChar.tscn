@@ -366,7 +366,7 @@ libraries = {
 }
 
 [node name="SwordArea" type="Area2D" parent="CharacterBody2D" groups=["\"charsword\""]]
-collision_mask = 14
+collision_mask = 46
 script = ExtResource("8_24df3")
 
 [node name="SwordHit" type="CollisionShape2D" parent="CharacterBody2D/SwordArea"]

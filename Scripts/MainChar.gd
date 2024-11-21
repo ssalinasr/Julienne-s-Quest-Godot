@@ -175,7 +175,7 @@ func _on_died() -> void:
 
 func _on_die_timer_timeout() -> void:
 	queue_free()
-	SceneChange._deferred_switch_scene("res://Scenes/IntLvel.tscn")
+	SceneChange.scene_to_switch("Level 0")
 	CountableVars.resetCounters()
 	
 func _on_hurt_timer_timeout() -> void:

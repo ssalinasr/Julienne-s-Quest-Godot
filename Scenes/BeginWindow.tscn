@@ -1,0 +1,102 @@
+[gd_scene load_steps=7 format=3 uid="uid://h377qap4i7d4"]
+
+[ext_resource type="Theme" uid="uid://b83cocpevtkr3" path="res://Assets/GameTheme.tres" id="1_b2hu0"]
+[ext_resource type="Script" path="res://Scripts/BeginManager.gd" id="1_q0q53"]
+[ext_resource type="Texture2D" uid="uid://dmxaigr4e3o5o" path="res://Assets/Knight_player_1.3/Knight_player/Talking_KG.png" id="2_n0eru"]
+[ext_resource type="Texture2D" uid="uid://chdy2mun4mp6t" path="res://Assets/Knight_player_1.3/Knight_player/Power_Up_KG_1.png" id="3_85u7q"]
+[ext_resource type="AudioStream" uid="uid://bot678vjcj37m" path="res://Audio/10_UI_Menu_SFX/013_Confirm_03.wav" id="5_pq8h3"]
+[ext_resource type="Texture2D" uid="uid://5jjmnf57u12q" path="res://Assets/Final/Final/Background_0.png" id="6_ej8pu"]
+
+[node name="BeginningWindow" type="Node2D"]
+script = ExtResource("1_q0q53")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 643.0
+offset_bottom = 357.0
+theme = ExtResource("1_b2hu0")
+
+[node name="LabelLol" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.734
+anchor_top = 0.944
+anchor_right = 0.734
+anchor_bottom = 0.944
+offset_left = -79.962
+offset_top = -0.00802612
+offset_right = 94.038
+offset_bottom = 33.992
+theme_override_font_sizes/font_size = 10
+text = "El diseño gráfico es mi pasión XD"
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 0
+offset_left = -19.0
+offset_top = -9.0
+offset_right = 659.0
+offset_bottom = 379.0
+theme = ExtResource("1_b2hu0")
+
+[node name="LabelObjetos" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.061
+anchor_top = 0.109
+anchor_right = 0.061
+anchor_bottom = 0.109
+offset_left = -0.223003
+offset_top = 0.086998
+offset_right = 559.777
+offset_bottom = 103.087
+theme_override_font_sizes/font_size = 72
+text = "Julienne's Quest"
+
+[node name="LabelInicio" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.387
+anchor_top = 0.602
+anchor_right = 0.387
+anchor_bottom = 0.602
+offset_left = 0.158981
+offset_top = 0.0859833
+offset_right = 174.159
+offset_bottom = 34.086
+text = "Iniciar (P)"
+
+[node name="TalkingKg" type="Sprite2D" parent="Control"]
+position = Vector2(48, 285)
+scale = Vector2(2, 2)
+texture = ExtResource("2_n0eru")
+hframes = 4
+
+[node name="PowerUpKg1" type="Sprite2D" parent="Control"]
+position = Vector2(591, 285)
+scale = Vector2(2, 2)
+texture = ExtResource("3_85u7q")
+flip_h = true
+hframes = 10
+frame = 5
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(321, 179)
+zoom = Vector2(1.8, 1.8)
+
+[node name="InteractSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_pq8h3")
+
+[node name="InteractTimer" type="Timer" parent="."]
+wait_time = 0.75
+one_shot = true
+
+[node name="ChargeTimer" type="Timer" parent="."]
+
+[node name="Background0" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(322.5, 187)
+scale = Vector2(0.873698, 0.870192)
+texture = ExtResource("6_ej8pu")
+
+[connection signal="timeout" from="ChargeTimer" to="." method="_on_charge_timer_timeout"]

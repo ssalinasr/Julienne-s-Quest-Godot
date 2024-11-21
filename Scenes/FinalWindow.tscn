@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://8dgu204dpqjh"]
+[gd_scene load_steps=4 format=3 uid="uid://8dgu204dpqjh"]
 
 [ext_resource type="Script" path="res://Scripts/EndingManager.gd" id="1_7e6a8"]
 [ext_resource type="Theme" uid="uid://b83cocpevtkr3" path="res://Assets/GameTheme.tres" id="1_g5yhv"]
+[ext_resource type="Texture2D" uid="uid://5jjmnf57u12q" path="res://Assets/Final/Final/Background_0.png" id="3_3umls"]
 
 [node name="FinalWindow" type="Node2D"]
 script = ExtResource("1_7e6a8")
@@ -9,14 +10,15 @@ script = ExtResource("1_7e6a8")
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 578.0
-offset_bottom = 323.0
+offset_right = 888.0
+offset_bottom = 499.0
 theme = ExtResource("1_g5yhv")
 
 [node name="Panel" type="Panel" parent="Control"]
 layout_mode = 0
-offset_right = 579.0
-offset_bottom = 326.0
+offset_left = -2.0
+offset_right = 887.0
+offset_bottom = 502.0
 theme = ExtResource("1_g5yhv")
 
 [node name="LabelTitleNotas" type="Label" parent="Control"]
@@ -35,23 +37,26 @@ text = "0/8: Cazador de lore"
 [node name="LabelObjetos" type="Label" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.076
-anchor_right = 0.076
-offset_left = 0.0719986
-offset_right = 174.072
-offset_bottom = 34.0
+anchor_left = 0.036
+anchor_top = 0.026
+anchor_right = 0.036
+anchor_bottom = 0.026
+offset_left = -0.408009
+offset_top = 0.026
+offset_right = 173.592
+offset_bottom = 34.026
 text = "Objetos recolectados"
 
 [node name="LabelRanking" type="Label" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.076
+anchor_left = 0.036
 anchor_top = 0.115
-anchor_right = 0.076
+anchor_right = 0.036
 anchor_bottom = 0.115
-offset_left = 0.0719986
+offset_left = -0.408005
 offset_top = -0.145
-offset_right = 144.072
+offset_right = 143.592
 offset_bottom = 33.855
 text = "0/45: Rank D"
 
@@ -59,22 +64,25 @@ text = "0/45: Rank D"
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.623
+anchor_top = 0.026
 anchor_right = 0.623
-offset_left = -0.0940247
+anchor_bottom = 0.026
+offset_left = -0.0940552
+offset_top = 0.026
 offset_right = 173.906
-offset_bottom = 34.0
+offset_bottom = 34.026
 text = "Notas recolectadas"
 
 [node name="LabelEnding" type="Label" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.081
+anchor_left = 0.041
 anchor_top = 0.26
-anchor_right = 0.081
+anchor_right = 0.041
 anchor_bottom = 0.26
-offset_left = 0.181999
-offset_top = 0.0199966
-offset_right = 493.182
+offset_left = -0.298
+offset_top = 0.0199738
+offset_right = 492.702
 offset_bottom = 199.02
 text = "Ending: Lore/Bad/Easter egg/Regular
 
@@ -83,16 +91,22 @@ Ending description lies here..."
 [node name="LabelOpcion" type="Label" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.08
-anchor_top = 0.873
-anchor_right = 0.08
-anchor_bottom = 0.873
-offset_left = -0.240002
-offset_top = 0.0209961
-offset_right = 518.76
-offset_bottom = 34.021
+anchor_left = 0.035
+anchor_top = 0.897
+anchor_right = 0.035
+anchor_bottom = 0.897
+offset_left = -0.280005
+offset_top = 0.0450134
+offset_right = 518.72
+offset_bottom = 34.045
 text = "Gracias por jugar, presiona R para reinciar..."
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(290, 163)
-zoom = Vector2(2, 2)
+position = Vector2(442, 251)
+zoom = Vector2(1.3, 1.3)
+
+[node name="Background0" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(441.5, 243)
+scale = Vector2(1.18359, 1.21635)
+texture = ExtResource("3_3umls")
